@@ -1,0 +1,54 @@
+a. Ringkasan dari materi pada tutorial kali ini
+	Pada tutorial kali ini dijelaskan penggunaan model dan service pada konsep
+	MVC. Model merupakan sebuah objek yang memiliki atribut-atribut tertentu.
+	pada tutorial kali ini objek modelnya adalah student dengan atribut nama, npm,
+	gpa. Sedangkan service adalah layer untuk memproses perintah dari controller
+	untuk memanipulasi data-data yang akan/sudah tersimpan.
+	
+b. Hasil jawaban dari bagian tutorial
+	Pertanyaan 1:
+	halaman add.html akan terbuka setelah berhasil menyimpan
+	
+	Pertanyaan 2:
+	Error. Karena untuk menjalankan request add param gpa dibutuhkan (required).
+	
+	Pertanyaan 3:
+	Data Student yang dicari muncul.
+	
+	Pertanyaan 4:
+	Data Student yang dicari tidak muncul. Karena saat program dimatikan dan
+	dijalankan ulang, apa yang sudah disimpan akan ter-reset oleh program 
+	(data yang disimpan bersifat sementara) sehingga saat dicari data tidak muncul.
+	
+	Pertanyaan 5:
+	iya, muncul.
+	
+	Pertanyaan 6:
+	Iya, muncul.
+
+c. Method selectStudent yang diimplementasikan
+
+	public StudentModel selectStudent(String npm) {
+		
+		for (int i = 0; i < studentList.size(); i++) {
+			if(studentList.get(i).getNpm().equals(npm)) {
+				return studentList.get(i);
+			}
+		}
+		
+		return null;
+	}
+
+	Di dalam method ini dilakukan iterasi sebanyak ukuran List yang kemudian
+	dicari npm yang sama dengan yang dicari. Jika sama method akan mengembalikan
+	objek student yang dicari sesuai npmnya, dan jika tidak ada yang sama maka
+	akan mengembalikan null.
+
+d. Fitur delete
+
+	Fitur delete, request delete dan param berupa npm diterima di controller
+	yang kemudian dilanjutkan ke service yang akan memproses apa yang diperintahkan.
+	Pertama, pada controller method delete akan memanggil method selectStudent
+	untuk mendapatkan onjek student yang dicari kemudian jika ada data student yang
+	disimpan yang sesuai akan dipanggil method delete dengan npm yang dimasukkan.
+	Data student akan dihapus dengan remove objek dari list yang ada.
